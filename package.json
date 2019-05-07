@@ -1,22 +1,30 @@
 {
-  "name": "electron-quick-start",
-  "version": "1.0.0",
-  "description": "A minimal Electron application",
+  "name": "AgentSync",
+  "productName": "AgentSync",
+  "version": "0.0.6",
   "main": "main.js",
   "scripts": {
-    "start": "electron ."
+    "postinstall": "install-app-deps",
+    "start": "npm install && electron .",
+    "pack": "build --dir",
+    "dist": "build"
   },
-  "repository": "https://github.com/electron/electron-quick-start",
-  "keywords": [
-    "Electron",
-    "quick",
-    "start",
-    "tutorial",
-    "demo"
-  ],
-  "author": "GitHub",
-  "license": "CC0-1.0",
+  "build": {
+    "appId": "agentsync",
+    "linux": {
+      "target": [
+        "AppImage",
+        "deb"
+      ]
+    },
+    "win": {
+      "target": "NSIS",
+      "icon": "build/icon.ico"
+    }
+  },
+  "dependencies": {},
   "devDependencies": {
-    "electron": "^5.0.0"
+    "electron": "latest",
+    "electron-builder": "^20.39.0"
   }
 }
